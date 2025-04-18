@@ -9,20 +9,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.cursorline = true -- Highlight the current line
 vim.opt.cursorcolumn = true -- Highlight the current column
-vim.opt.shellslash = true -- Use forward slashes in paths (Windows fix)
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard
-vim.g.clipboard = {
-  name = "win32yank",
-  copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf",
-  },
-  paste = {
-    ["+"] = "win32yank.exe -o --lf",
-    ["*"] = "win32yank.exe -o --lf",
-  },
-  cache_enabled = 0,
-}
 
 -- Ensure lazy.nvim is installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -66,6 +53,6 @@ vim.keymap.set("n", "<leader>xx", ":TroubleToggle<CR>", { desc = "Toggle Trouble
 vim.keymap.set("n", "<leader>xw", ":Trouble workspace_diagnostics<CR>", { desc = "Workspace diagnostics" })
 vim.keymap.set("n", "<leader>xd", ":Trouble document_diagnostics<CR>", { desc = "Document diagnostics" })
 
--- Apply theme
-vim.cmd.colorscheme("tokyonight")
+-- Load colorscheme
+require("plugins.colorscheme")
 
